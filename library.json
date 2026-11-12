@@ -1,12 +1,12 @@
 {
-	"name": "DHT sensor library for ESPx",
-	"keywords": "onewire, 1-wire, bus, sensor, temperature",
-	"description": "Arduino ESP library for DHT11, DHT22, etc Temp & Humidity Sensors. Last changes: Fix negative temperature problem (credits @helijunky)",
+	"name": "DHTesp",
+	"keywords": "onewire, 1-wire, bus, sensor, temperature, dht22, dht11, esp32, esp32-s3",
+	"description": "Arduino ESP32/ESP32-S3/ESP8266 library for DHT11 and DHT22 Temp & Humidity Sensors with ESP32-S3 INPUT_PULLUP and FreeRTOS critical section fixes.",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/beegee-tokyo/DHTesp.git"
+		"url": "https://github.com/julianvitor/DHTespOrg.git"
 	},
-	"version": "1.19",
+	"version": "1.20.0",
 	"frameworks": "arduino",
 	"platforms": [
 		"espressif8266",
@@ -15,5 +15,5 @@
 		"atmelavr"
 	],
 	"license": "GPL-3.0-only",
-	"homepage": "http://desire.giesecke.tk/index.php/2018/01/30/esp32-dht11/"
+	"homepage": "https://github.com/julianvitor/DHTespOrg"
 }

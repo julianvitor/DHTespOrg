@@ -216,7 +216,7 @@ void DHTesp::readSensor()
 		do
 		{
 			age = (unsigned long)(micros() - startTime);
-			if (age > 90)
+			if (age > 200)
 			{
 				error = ERROR_TIMEOUT;
 #ifdef ESP32
@@ -227,7 +227,7 @@ void DHTesp::readSensor()
 #endif
 				return;
 			}
-		} while (digitalRead(pin) == (i & 1) ? HIGH : LOW);
+		} while (digitalRead(pin) == ((i & 1) ? HIGH : LOW));
 
 		if (i >= 0 && (i & 1))
 		{
