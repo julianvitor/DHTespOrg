@@ -31,6 +31,7 @@ void DHTesp::setup(uint8_t pin, DHT_MODEL_t model)
 {
 	DHTesp::pin = pin;
 	DHTesp::model = model;
+	pinMode(pin, INPUT_PULLUP);
 	DHTesp::resetTimer(); // Make sure we do read the sensor in the next readSensor()
 
 	if (model == AUTO_DETECT)
@@ -190,9 +191,6 @@ void DHTesp::readSensor()
 		delay(2);
 	}
 
-	pinMode(pin, INPUT);
-	digitalWrite(pin, HIGH); // Switch bus to receive data
-
 	// We're going to read 83 edges:
 	// - First a FALLING, RISING, and FALLING edge for the start bit
 	// - Then 40 bits: RISING and then a FALLING edge per bit
@@ -207,6 +205,9 @@ void DHTesp::readSensor()
 	//   cli();
 	noInterrupts();
 #endif
+	digitalWrite(pin, HIGH); // Actively drive bus HIGH before switching to weak pull-up
+	delayMicroseconds(5);
+	pinMode(pin, INPUT_PULLUP); // Switch bus to receive data while preserving internal pull-up
 	for (int8_t i = -3; i < 2 * 40; i++)
 	{
 		byte age;
